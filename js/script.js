@@ -1,3 +1,5 @@
+
+
 // function for computer turns
 
 function computerPlay(){
@@ -30,9 +32,9 @@ function userPlay() {
 
 let playerScore = 0;
 let computerScore = 0;
-let winner
-function playRound() {
 
+function playRound() {
+let winner;
    let userChoice = userPlay();
     let computerChoice = computerPlay();
 // win scenarios
@@ -50,7 +52,7 @@ function playRound() {
     }
 // draw scenario
 else if (userChoice == 'rock' && computerChoice == 'rock'||userChoice == 'paper' && computerChoice == 'paper'||userChoice=='scissors'&&computerChoice=='scissors'){
-        playerScore++;
+   
         console.log(`You chose ${userChoice} and computer chose ${computerChoice}`);
         winner = 'Draw Game!!!';
     }
@@ -58,4 +60,27 @@ else if (userChoice == 'rock' && computerChoice == 'rock'||userChoice == 'paper'
 return winner
 }
 
-console.log(playRound());
+// function for 5 round game
+
+
+
+function playGame() {
+    let overallWinner;
+    console.log('Best of 5 let\'s go!');
+    for (let i = 1; i < 6; i++){
+        console.log(`Round${i}`);
+        console.log(playRound());
+        console.log(`Your score-${playerScore}`)
+        console.log(`Computer score-${computerScore}`)
+    }
+    if (playerScore > computerScore) {
+    overallWinner='Player 1 Wins';
+    }
+    else if (computerScore > playerScore) {
+        overallWinner = 'Computer wins';
+    }
+    else if (computerScore == playerScore) {
+        overallWinner = 'Draw Game';
+    }
+    return overallWinner;
+}
